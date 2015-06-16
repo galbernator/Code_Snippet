@@ -1,0 +1,21 @@
+<h1>Add a Code Snippet</h1>
+<div>
+<div>
+<%= form_for @snippet do |f| %>
+<div>
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.all, :id, :title %>
+</div>
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div>
+  <%= f.label :block, "Snippet: " %>
+  <%= f.text_area :block %>
+</div>
+<div>
+  <%= f.submit "Add Snippet" %>
+</div>
+<% end %>
+</div>

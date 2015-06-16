@@ -1,1 +1,9 @@
 <h1>Welcome to Code Snippets</h1>
+
+<% @categories.each do |category| %>
+<%  number = Snippet.where("category_id = #{category.id}").length %>
+<p>
+  <%= link_to category.title, category_path(category) %> (<%= number %>)
+</p>
+
+<% end %>
