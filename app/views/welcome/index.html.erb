@@ -1,9 +1,21 @@
 <h1>Welcome to Code Snippets</h1>
 
-<% @categories.each do |category| %>
-<%  number = Snippet.where("category_id = #{category.id}").length %>
-<p>
-  <%= link_to category.title, category_path(category) %> (<%= number %>)
-</p>
+<h2>Snippet Search</h2>
 
+<%= form_tag root_path, :method => 'get'  do %>
+  <%= text_field_tag :search, params[:search]%>
+  <%= submit_tag "Search", :name => nil  %>
+<% end %>
+
+<% if params[:search] %>
+  <% @categories.each do |snippet| %>
+    <%= link_to snippet.title, snippet_path(snippet) %>
+  <% end %>
+<% else %>
+  <% @categories.each do |category| %>
+    <% number = Snippet.where("category_id = #{category.id}").length %>
+    <p>
+      <%= link_to category.title, category_path(category) %> (<%= number %>)
+    </p>
+  <% end %>
 <% end %>
