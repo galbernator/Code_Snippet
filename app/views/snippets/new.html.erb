@@ -1,5 +1,17 @@
 <h1>Add a Code Snippet</h1>
 <div>
+  <% if @snippet.errors.any? %>
+    <ul class="submit-errors">
+      <% @snippet.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
+
+<div>
   <%= form_for @snippet do |f| %>
     <div>
       <%= f.label :category %>

@@ -1,21 +1,17 @@
 <h1>Welcome to Code Snippets</h1>
 
+<p>Please create an account or log in to see your snippets, otherwise you snippets will be available to everyone.</p>
+
 <h2>Snippet Search</h2>
 
-<%= form_tag root_path, :method => 'get'  do %>
+<%= form_tag search_path do %>
   <%= text_field_tag :search, params[:search]%>
   <%= submit_tag "Search", :name => nil  %>
 <% end %>
 
-<% if params[:search] %>
-  <% @categories.each do |snippet| %>
-    <%= link_to snippet.title, snippet_path(snippet) %>
-  <% end %>
-<% else %>
   <% @categories.each do |category| %>
     <% number = Snippet.where("category_id = #{category.id}").length %>
     <p>
-      <%= link_to category.title, category_path(category) %> (<%= number %>)
+      <%= link_to category.title, category_path(category) %> (<%= number > 1 || number == 0 ? "#{number} Snippets" : "#{number} Snippet" %>)
     </p>
   <% end %>
-<% end %>

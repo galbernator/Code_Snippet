@@ -14,6 +14,18 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
+  post "/search" => "welcome#search", as: :search
+
+  resources :users, only: [:new, :create] do
+    get :edit, on: :collection
+    patch :update, on: :collection
+  end
+
+  resources :sessions, only: [:new, :create, :show] do
+    delete :destroy, on: :collection
+  end
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

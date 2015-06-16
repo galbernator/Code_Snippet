@@ -9,7 +9,16 @@
 <body>
   <img src="http://media.merchantcircle.com/11967796/LOGO-CS_full.jpeg" class="logo" />
   <%= link_to "Home", root_path %> |
-  <%= link_to "New Snippet", new_snippet_path %>
+  <%= link_to "New Snippet", new_snippet_path %> |
+  <% if session[:user_id] %>
+    You are logged in as <%= current_user.first_name %> |
+    <%= link_to "My Snippets", session_path(current_user) %> |
+    <%= link_to "Log Out", sessions_path, method: :delete  %> |
+    <%= link_to "Edit Profile", edit_users_path  %>
+  <% else %>
+    <%= link_to "Create Account", new_user_path %> |
+    <%= link_to "Sign In", new_session_path %>
+  <% end %>
   <hr>
 
 <%= yield %>

@@ -1,7 +1,7 @@
 class SnippetsController < ApplicationController
 
   def index
-    @snippets = Snippet.all
+    @snippets = Snippet.where("user_id = ?", nil)
   end
 
   def new
@@ -11,6 +11,7 @@ class SnippetsController < ApplicationController
   def create
     snippet_params = params.require(:snippet).permit(:title, :block, :category_id)
     @snippet = Snippet.new(snippet_params)
+    @snippet.user_id = current_user.id
     if @snippet.save
       redirect_to snippet_path(@snippet)
     else

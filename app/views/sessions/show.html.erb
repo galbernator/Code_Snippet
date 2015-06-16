@@ -1,0 +1,21 @@
+<h1>My Code Snippets</h1>
+
+<div>
+  <h2>Snippets by Language</h2>
+<% @all_snippets.each do |snippet| %>
+  <% if @categories[snippet.category.title] == 0 %>
+    <% number = Snippet.where("category_id = #{snippet.category_id} AND user_id = #{current_user.id}").length %>
+    <p>
+      <%= link_to snippet.category.title, category_path(snippet.category_id) %> <%= number > 1 || number == 0 ? "(#{number} Snippets)" : "(#{number} Snippet)" %>
+    </p>
+    <% @categories[snippet.category.title] += 1 %>
+    <% end %>
+<% end %>
+</div>
+<hr>
+<div>
+  <h2>Latest Snippets</h2>
+  <% @snippets.each do |snippet| %>
+  <p><%= link_to snippet.title, snippet_path(snippet) %> (<%= snippet.category.title %>)</p>
+  <% end %>
+</div>
