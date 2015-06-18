@@ -5,23 +5,37 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <img src="http://media.merchantcircle.com/11967796/LOGO-CS_full.jpeg" class="logo" />
-  <%= link_to "Home", root_path %> |
-  <%= link_to "New Snippet", new_snippet_path %> |
-  <% if session[:user_id] %>
-    You are logged in as <%= current_user.first_name %> |
-    <%= link_to "My Snippets", session_path(current_user) %> |
-    <%= link_to "Log Out", sessions_path, method: :delete  %> |
-    <%= link_to "Edit Profile", edit_users_path  %>
-  <% else %>
-    <%= link_to "Create Account", new_user_path %> |
-    <%= link_to "Sign In", new_session_path %>
-  <% end %>
-  <hr>
+  <div class="container-fluid">
+    <div class="row nav">
+      <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to image_tag("http://media.merchantcircle.com/11967796/LOGO-CS_full.jpeg", :id=> "logo"), root_path  %></a></div>
+      <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
+        <div class="row">
+      <% if session[:user_id] %>
+          <div class="col-xs-3 col-sm-offset-2 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "Add Snippet", new_snippet_path %></div>
+          <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "My Snippets", session_path(current_user) %></div>
+          <div class="col-xs-3 col-sm-2 col-md-2 right"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<%= link_to current_user.first_name, edit_users_path  %></div>
+          <div class="col-xs-3 col-sm-2 col-md-2 right pad-right"><%= link_to "Log Out", sessions_path, method: :delete  %></div>
+      <% else %>
+          <div class="col-xs-3 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2 right col-lg-offset-7 col-lg-1"><%= link_to "Sign In", new_session_path %></div>
+          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 right"><%= link_to "Create Account", new_user_path %></div>
+          <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2 right pad-right"><%= link_to "+ Public Snippet", new_snippet_path %></div>
+      <% end %>
+        </div>
+      </div>
+    </div>
 
-<%= yield %>
 
+    <%= yield %>
+
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

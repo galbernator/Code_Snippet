@@ -2,7 +2,78 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.logo {
+.code-background {
+  background-image: image-url("codescreen.jpg");
+  background-size: cover;
+}
+
+.block-it {
+  display: block;
+}
+
+#logo {
   max-width: 35px;
-  margin: 10px 15px 0px 20px ;
+  float: left;
+  margin: 10px 0px 10px -5px;
+}
+
+.over-image {
+  // border: 3px solid #fff;
+  border-radius: 10px;
+  margin: 50px auto 50px auto;
+  max-width: 460px;
+  display: block;
+}
+
+.right {
+  text-align: right;
+  font-weight: bold;
+  padding-top: 14px;
+}
+
+.nav-links {
+  float: right;
+  width: 100%;
+}
+
+.pad-right {
+  padding-right: 25px;
+}
+
+.attention {
+  color: #fff;
+  background-color: #00abeb;
+  margin: 20px 132px;
+  width: 200px;
+  font-size: 1.5em;
+  display: block;
+  align: center;
+}
+
+.main-title {
+  font-size: 2.7em;
+  color: #fff;
+  margin: 15px auto 10px auto;
+  text-align: center;
+  line-height: 45px;
+}
+
+.intro-text {
+  color:#fff;
+  max-width: 400px;
+  font-size: 1.25em;
+  margin: 0px auto;
+  text-align: center;
+  line-height: 26px;
+}
+
+.emphasis {
+  font-size: 1.5em;
+  font-style: italic;
+  line-height: 36px;
+}
+
+.plain-link button{
+  text-decoration: none;
+  color: #fff;
 }
