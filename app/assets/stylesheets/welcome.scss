@@ -9,6 +9,8 @@
 
 .block-it {
   display: block;
+  padding-left: auto;
+  padding-right: auto;
 }
 
 #logo {
@@ -20,7 +22,7 @@
 .over-image {
   // border: 3px solid #fff;
   border-radius: 10px;
-  margin: 50px auto 50px auto;
+  margin: 70px auto 90px auto;
   max-width: 460px;
   display: block;
 }
@@ -42,8 +44,10 @@
 
 .attention {
   color: #fff;
-  background-color: #00abeb;
-  margin: 20px 132px;
+  background-color: #FFB600;
+  // background-color: #00abeb;
+  margin-top: 20px;
+  margin-bottom: 30px;
   width: 200px;
   font-size: 1.5em;
   display: block;
@@ -73,7 +77,138 @@
   line-height: 36px;
 }
 
-.plain-link button{
+.plain-link {
   text-decoration: none;
   color: #fff;
+}
+
+.plain-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.top-and-bottom {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.welcome {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  font-size: 3em;
+  font-family: 'Montserrat', sans-serif;
+  color: #555;
+}
+
+.blurb {
+  max-width: 270px;
+  text-align: center;
+  font-size: 1.4em;
+  line-height: 1.6em;
+  margin-bottom: 20px;
+  padding: 5px, 10px;
+}
+
+#search-form {
+  height: 36px;
+  width: 77%;
+  margin-top: 10px;
+  line-height: 30px;
+  font-size: 18px;
+  border: 1px solid #00abeb;
+  border-radius: 5px;
+  align: left;
+}
+
+#search-button {
+  height: 36px;
+  border: 1px solid #00abeb;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 30px;
+  background-color: #fff;
+  width: 20%;
+  margin-top: 10px;
+  min-width: 85px;
+  align: right;
+}
+
+.wide {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.language-cell {
+  vertical-align: middle;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.language {
+  font-size: 28px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.language:hover {
+  font-size: 28px;
+  color: #ccc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.dark {
+  background-color: #444;
+  padding-bottom: 10px;
+}
+
+.snippet-count {
+  color: #FFB600;
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+.break {
+  margin-bottom: 3px;
+}
+
+.testimonial-box {
+  border: 2px solid #666;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.testimonial {
+  font-family: 'Rock Salt', cursive;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.responsive-video {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 60px; overflow: hidden;
+}
+
+
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
 }

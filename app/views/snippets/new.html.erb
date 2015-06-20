@@ -15,7 +15,7 @@
   <%= form_for @snippet do |f| %>
     <div>
       <%= f.label :category %>
-      <%= f.collection_select :category_id, Category.all, :id, :title %>
+      <%= f.collection_select :category_id, Category.order("title"), :id, :title %>
     </div>
     <div>
       <%= f.label :title %>

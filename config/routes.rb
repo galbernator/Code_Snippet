@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  post "/search" => "welcome#search", as: :search
+  post "/search" => "welcome#search", as: :all_search
+
+  post "/categories/:id/search" => "categories#search", as: :category_search
 
   resources :users, only: [:new, :create] do
     get :edit, on: :collection

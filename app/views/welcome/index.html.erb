@@ -1,38 +1,115 @@
 <div class="row code-background">
-  <div class="col-xs-12 col-sm-offset-3 col-sm-9 col-md-offset-6 col-md-6 block-it">
+  <div class="col-xs-12 col-sm-12 col-md-offset-6 col-md-6 block-it">
     <div class="over-image">
       <h1 class="main-title">Don't Google it<br />CodeSnippet it</h1>
       <p class="intro-text">
         With easy access to all kinds of code snippets you'll never have to
         fuss with skimming through search results again. And best of all,<br /><span class="emphasis">IT'S FREE!</span>
       </p>
-      <a class="plain-link" href="#"><button class="btn btn-lg attention plain-link">JOIN TODAY</button></a>
+      <%= button_to "JOIN TODAY", new_user_path, :class => "plain-link btn btn-lg attention center-block" %>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-<h1>Welcome to Code Snippet</h1>
-
-<p>Please create an account or log in to see your snippets, otherwise you snippets will be available to everyone.</p>
-
-<h2>Snippet Search</h2>
-
-<%= form_tag search_path do %>
-  <%= text_field_tag :search, params[:search]%>
-  <%= submit_tag "Search", :name => nil  %>
-<% end %>
-
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+    <%= form_tag all_search_path do %>
+      <%= text_field_tag :search, params[:search], :id => "search-form"%>
+      <%= submit_tag "Search", :name => nil, :id => "search-button"  %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+      <h1 class="center-text welcome">Welcome to CodeSnippet</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-4 col-md-4 topper">
+      <%= image_tag "time.png", class: "center-block top-and-bottom" %>
+      <h3 class="center-text">SAVE TIME</h3>
+      <p class="blurb center-block">
+        Not only do we offer a vast database of code snippets but you can save
+        them to your account for easy future use, review, and help!
+      </p>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 topper">
+      <%= image_tag "cut.png", class: "center-block top-and-bottom" %>
+      <h3 class="center-text">CUT AND PASTE</h3>
+      <p class="blurb center-block">
+        Our upcoming web browser extension will allow for even quicker code
+        snagging and saving. Coming soon to a screen near you!
+      </p>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 topper">
+      <%= image_tag "brackets.png", class: "center-block top-and-bottom" %>
+      <h3 class="center-text">ACCESSABLE CODE</h3>
+      <p class="blurb center-block">
+        The right code is good but knowing how and why it
+        works is important. The code explanations add education to the solution.
+      </p>
+  </div>
+</div>
+<div class="row dark break">
+  <div class="col-xs-12">
+    <span class="main-title center-block">Most Popular Languages and Frameworks</span>
+  </div>
+</div>
+<div class="row dark">
   <% @categories.each do |category| %>
     <% number = Snippet.where("category_id = #{category.id}").length %>
-    <p>
-      <%= link_to category.title, category_path(category) %> (<%= number > 1 || number == 0 ? "#{number} Snippets" : "#{number} Snippet" %>)
-    </p>
+  <div class="col-xs-6 col-sm-4 col-md-3">
+    <table class="wide">
+      <tr>
+        <td class="language-cell">
+          <%= link_to category.title.upcase, category_path(category), :class => "language" %><br>
+          <span class="snippet-count"><%= number > 1 || number == 0 ? "#{number} Snippets" : "#{number} Snippet" %></span>
+        </td>
+      </tr>
+    </table>
+  </div>
   <% end %>
+  <div class="col-xs-6 col-sm-4 col-md-3">
+    <table class="wide">
+      <tr>
+        <td class="language-cell">
+          <a href="#"class="language">SEE MORE...</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="center-text welcome">Fast.&nbsp;&nbsp;Clean.&nbsp;&nbsp;Efficient.</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#"><button class="btn btn-lg attention center-block plain-link">START SNIPPING</button></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 top-and-bottom">
+    <div class="responsive-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/nKIu9yen5nc" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="testimonial-box center-block top-and-bottom">
+      <p class="testimonial">
+        This is the space for testimonials about how awesome this site is and how much it helps everyone stay
+        organized and be smarter!
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="testimonial-box center-block top-and-bottom">
+      <p class="testimonial">
+        This is the space for testimonials about how awesome this site is and how much it helps everyone stay
+        organized and be smarter!
+      </p>
+    </div>
+  </div>
+</div>

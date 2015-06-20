@@ -1,12 +1,17 @@
 class WelcomeController < ApplicationController
 
   def index
-    @categories = Category.all
+    @categories = Category.all.limit(11)
   end
 
   def search
     # TODO: consider moving this into a scope in the snippet model
-    @snippets = Snippet.where("lower(title) ILIKE ? OR lower(block) ILIKE ?", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%")
+    q = "%#{params[:search]}%"
+    @snippets = Snippet.joins(:category).
+      where("snippets.title ILIKE ? OR
+             snippets.block ILIKE ? OR
+             categories.title ILIKE ?",
+             q, q, q)
   end
 
 end
