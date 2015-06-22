@@ -1,11 +1,28 @@
-<h1>Search Results</h1>
-
-<% if @snippets.length != 0  %>
-  <% @snippets.each do |snippet| %>
-    <%= link_to snippet.title, snippet_path(snippet) %>
+<div class="row">
+  <div id="search" class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+    <%= form_tag all_search_path do %>
+      <%= text_field_tag :search, params[:search], :id => "search-form"%>
+      <%= submit_tag "Search", :name => nil, :id => "search-button"  %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
+    <div class="row">
+  <h1 class="center-text top-and-bottom">Search Results</h1>
+  <% if @snippets.length != 0  %>
+    <% @snippets.each do |snippet| %>
+      <div class="col-xs-6 col-sm-4 col-md-3 search-results">
+          <%= link_to snippet.title, snippet_path(snippet) %>
+      </div>
+    <% end %>
+  </div>
+  <% else %>
+    <div class="col-xs-12">
+      <p class="center-text">
+        There were no snippets matching <%= @search %>.
+      </p>
+    </div>
   <% end %>
-<% else %>
-    <p>
-      There were no snippets matching <%= @search %>.
-    </p>
-<% end %>
+  </div>
+</div>

@@ -11,7 +11,9 @@ class SnippetsController < ApplicationController
   def create
     snippet_params = params.require(:snippet).permit(:title, :block, :category_id, :description, :is_private)
     @snippet = Snippet.new(snippet_params)
-    @snippet.user_id = current_user.id
+    if current_user
+      @snippet.user_id = current_user.id
+    end
     if @snippet.save
       redirect_to snippet_path(@snippet)
     else

@@ -1,16 +1,18 @@
-<h1>Log In to Your Account</h1>
-<div>
-  <%= form_tag sessions_path do %>
-    <div>
-      <%= label_tag :email %>
-      <%= email_field_tag :email %>
-    </div>
-    <div>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
-    <div>
-      <%= submit_tag "Sign In" %>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4">
+    <h1 class="center-text">Log In</h1>
+    <%= form_tag sessions_path do %>
+      <div class="form-group">
+        <%= label_tag :email %>
+        <%= email_field_tag :email,"", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password %>
+        <%= password_field_tag :password,"", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Sign In", class: "form-control account-button" %>
+      </div>
+    <% end %>
+  </div>
 </div>

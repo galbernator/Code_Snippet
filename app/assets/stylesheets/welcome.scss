@@ -22,10 +22,13 @@ html, body {
    top: 0;
 }
 
+.right a {
+	color: #00abeb;
+}
 
 #divider-top {
   margin: 10px auto 5px auto;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #FFB600;
   width: 94%;
 }
 
@@ -147,13 +150,14 @@ a:hover {
 
 #search-form {
   height: 36px;
-  width: 77%;
+  width: 74%;
   margin-top: 10px;
   line-height: 30px;
   font-size: 18px;
   border: 1px solid #00abeb;
   border-radius: 5px;
   align: left;
+	padding-left: 10px;
 }
 
 #search-button {
@@ -260,7 +264,7 @@ height: 100%;
 
 #footer-logo {
   height: auto;
-  max-width: 60px;
+  max-width: 50px;
   padding-top: 10px;
 }
 
@@ -275,4 +279,26 @@ height: 100%;
 
 .footer-icon {
   color: #fff;
+}
+
+.search-results a {
+	display: block;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #fdfdfd;
+	color: #00abeb;;
+	text-align: center;
+	line-height: 36px;
+	font-size: 18px;
+	margin: 8px 0px;
+}
+
+.search-results a:hover {
+	display: block;
+	border-radius: 4px;
+	background-color: #FFB600;
+	text-align: center;
+	line-height: 36px;
+	font-size: 18px;
+	color: #fff;
 }

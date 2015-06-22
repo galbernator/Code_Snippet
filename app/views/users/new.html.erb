@@ -1,29 +1,28 @@
-<h1>Create Account</h1>
-
-<div>
+<div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+  <h1 class="text-center">Create Account</h1>
   <%= form_for @user do |f| %>
-    <div>
+    <div class="form-group">
       <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
     </div>
     <div>
       <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: "form-control" %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: "form-control" %>
     </div>
     <div>
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
-    <div>
-      <%= f.submit "Create Account" %>
+    <div class="form-group">
+      <%= f.submit "Create Account", class: "form-control account-button button-space" %>
     </div>
   <% end %>
 </div>
