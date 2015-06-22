@@ -1,5 +1,11 @@
 <h1>Search Results</h1>
 
-<% @snippets.each do |snippet| %>
-  <%= link_to snippet.title, snippet_path(snippet) %>
+<% if @snippets.length != 0  %>
+  <% @snippets.each do |snippet| %>
+    <%= link_to snippet.title, snippet_path(snippet) %>
+  <% end %>
+<% else %>
+    <p>
+      There were no snippets matching <%= @search %>.
+    </p>
 <% end %>

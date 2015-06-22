@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616045608) do
+ActiveRecord::Schema.define(version: 20150620224528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150616045608) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.integer  "user_id"
+    t.boolean  "is_private"
+    t.text     "description"
   end
 
   add_index "snippets", ["category_id"], name: "index_snippets_on_category_id", using: :btree

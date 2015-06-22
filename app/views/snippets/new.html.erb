@@ -26,6 +26,16 @@
       <%= f.text_area :block %>
     </div>
     <div>
+      <%= f.label :description, "Description of Snippet: " %>
+      <%= f.text_area :description %>
+    </div>
+    <% if current_user %>
+    <div>
+      <%= f.check_box(:is_private) %>
+      <%= f.label :is_private, "Private" %>
+    </div>
+    <% end %>
+    <div>
       <%= f.submit "Add Snippet" %>
     </div>
   <% end %>

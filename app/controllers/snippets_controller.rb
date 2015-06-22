@@ -9,7 +9,7 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    snippet_params = params.require(:snippet).permit(:title, :block, :category_id)
+    snippet_params = params.require(:snippet).permit(:title, :block, :category_id, :description, :is_private)
     @snippet = Snippet.new(snippet_params)
     @snippet.user_id = current_user.id
     if @snippet.save
@@ -29,7 +29,7 @@ class SnippetsController < ApplicationController
 
   def update
     @snippet = Snippet.find params[:id]
-    snippet_params = params.require(:snippet).permit(:title, :block)
+    snippet_params = params.require(:snippet).permit(:title, :block, :category_id, :description, :is_private)
     if @snippet.update(snippet_params)
       redirect_to snippet_path(@snippet)
     else

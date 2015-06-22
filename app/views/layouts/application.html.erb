@@ -12,32 +12,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row nav">
-      <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to image_tag("http://media.merchantcircle.com/11967796/LOGO-CS_full.jpeg", :id=> "logo"), root_path  %></a></div>
-      <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
-        <div class="row">
-      <% if session[:user_id] %>
-          <div class="col-xs-3 col-sm-offset-2 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+ SNIPPET", new_snippet_path %></div>
-          <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY SNIPPETS", session_path(current_user) %></div>
-          <div class="col-xs-3 col-sm-2 col-md-2 right"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<%= link_to current_user.first_name.upcase, edit_users_path  %></div>
-          <div class="col-xs-3 col-sm-2 col-md-2 right pad-right"><%= link_to "LOG OUT", sessions_path, method: :delete  %></div>
-      <% else %>
-          <div class="col-xs-4 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2 right col-lg-offset-4 col-lg-2"><%= link_to "SIGN IN", new_session_path %></div>
-          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right pad-right"><%= link_to "ADD SNIPPET", new_snippet_path %></div>
-          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right"><%= link_to "CREATE ACCOUNT", new_user_path %></div>
-      <% end %>
+    <div class="wrapper">
+      <div class="container-fluid">
+        <div class="row nav">
+          <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to image_tag("logo.png", :id=> "logo"), root_path  %></div>
+          <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
+            <div class="row">
+          <% if session[:user_id] %>
+              <div class="col-xs-3 col-sm-offset-2 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user) %></div>
+              <div class="col-xs-3 col-sm-2 col-md-2 right"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<%= link_to current_user.first_name.upcase, edit_users_path  %></div>
+              <div class="col-xs-3 col-sm-2 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete  %></div>
+          <% else %>
+              <div class="col-xs-4 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2 right col-lg-offset-4 col-lg-2"><%= link_to "SIGN&nbsp;IN".html_safe, new_session_path %></div>
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right pad-right"><%= link_to "ADD&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right"><%= link_to "CREATE&nbsp;ACCOUNT".html_safe, new_user_path %></div>
+          <% end %>
+            </div>
+          </div>
+        </div>
+          <div id="divider-top"></div>
+
+
+          <%= yield %>
+
+          <div class="push"></div>
+        </div>
+      </div>
+      <div class="container-fluid">
+      <div class="row footer-color footer">
+        <div class="col-xs-2 col-sm-4 col-md-3">
+              <%= link_to image_tag("logo.png", :id=> "footer-logo"), root_path  %>
+        </div>
+        <div class="col-xs-10 col-sm-8 col-md-9">
+          <div class="row">
+            <% if session[:user_id] %>
+              <div class="col-xs-3 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user) %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><span class="glyphicon glyphicon-user footer-icon">&nbsp;</span><%= link_to current_user.first_name.upcase, edit_users_path  %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete  %></div>
+            <% else %>
+                <div class="col-xs-3 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2 right col-lg-offset-4 col-lg-2"><%= link_to "SIGN&nbsp;IN".html_safe, new_session_path %></div>
+                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right pad-right"><%= link_to "ADD&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
+                <div class="col-xs-5 col-sm-3 col-md-3 col-lg-3 right"><%= link_to "CREATE&nbsp;ACCOUNT".html_safe, new_user_path %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <p class="company">&copy;&nbsp;2015&nbsp;CodeSnippet by&nbsp;Steve&nbsp;Galbraith</p>
         </div>
       </div>
     </div>
-
-
-    <%= yield %>
-
-  </div>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

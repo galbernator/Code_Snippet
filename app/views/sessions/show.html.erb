@@ -2,14 +2,12 @@
 
 <div>
   <h2>Snippets by Language</h2>
-<% @all_snippets.each do |snippet| %>
-  <% if @categories[snippet.category.title] == 0 %>
-    <% number = Snippet.where("category_id = #{snippet.category_id} AND user_id = #{current_user.id}").length %>
-    <p>
-      <%= link_to snippet.category.title, category_path(snippet.category_id) %> <%= number > 1 || number == 0 ? "(#{number} Snippets)" : "(#{number} Snippet)" %>
-    </p>
-    <% @categories[snippet.category.title] += 1 %>
-    <% end %>
+<% @unique_categories.each do |category| %>
+  <% number = Snippet.joins(:category).where("categories.title = ? AND snippets.user_id = ?", "#{category}", 1).length %>
+  <% cat = Category.where("title = ?", "#{category}") %>
+  <div>
+    <%= link_to category, category_path(cat.first.id) %> <%= number > 1 || number == 0 ? "(#{number} Snippets)" : "(#{number} Snippet)" %>
+  </div>
 <% end %>
 </div>
 <hr>
