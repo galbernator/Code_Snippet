@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  resources :snippets
+  resources :snippets do
+    resources :votes, only: [:create, :update, :destroy]
+  end
 
   resources :categories, only: [:show]
 

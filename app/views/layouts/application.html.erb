@@ -19,8 +19,8 @@
           <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
             <div class="row">
           <% if session[:user_id] %>
-              <div class="col-xs-3 col-sm-offset-2 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
-              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user) %></div>
+              <div class="col-xs-3 col-sm-offset-2 col-sm-4 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path %></div>
+              <div class="col-xs-3 col-sm-2 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user) %></div>
               <div class="col-xs-3 col-sm-2 col-md-2 right"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<%= link_to current_user.first_name.upcase, edit_users_path  %></div>
               <div class="col-xs-3 col-sm-2 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete  %></div>
           <% else %>

@@ -1,3 +1,25 @@
 // Place all the styles related to the snippets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.code {
+  color: #fff;
+  background-color: #333;
+  padding: 20px 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.centered {
+  text-align: center;
+}
+
+.table-top {
+  // padding-top: auto;
+  // padding-bottom: auto;
+  vertical-align: middle;
+}

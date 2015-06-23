@@ -23,6 +23,7 @@ class SnippetsController < ApplicationController
 
   def show
     @snippet = Snippet.find params[:id]
+    @vote = @snippet.vote_for(current_user)
   end
 
   def edit

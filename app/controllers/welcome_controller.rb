@@ -15,15 +15,18 @@ class WelcomeController < ApplicationController
                categories.title ILIKE ? AND
                (snippets.is_private = ? AND
                snippets.user_id = ?)",
-               q, q, q, true, current_user.id)
+               q, q, q, true, current_user.id).
+               order("length(snippets.title)")
       else
         @snippets = Snippet.joins(:category).
-          where("snippets.title ILIKE ? OR
+          where("snippets.is_private = ? AND
+                (snippets.title ILIKE ? OR
                  snippets.block ILIKE ? OR
-                 categories.title ILIKE ? AND
-                 snippets.is_private = ?",
-                 q, q, q, false)
+                 categories.title ILIKE ?)",
+                 false, q, q, q).order
+                 ("length(snippets.title)")
       end
+
   end
 
 end
