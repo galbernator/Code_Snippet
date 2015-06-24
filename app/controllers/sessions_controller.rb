@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       all_categories << snippet.category.title
     end
     @unique_categories = all_categories.uniq
-    @snippets = Snippet.where("user_id = ?", "#{current_user.id}").order("created_at DESC").limit(10)
+    @snippets = Snippet.where("user_id = ?", "#{current_user.id}").order("created_at DESC")
   end
 
   def destroy

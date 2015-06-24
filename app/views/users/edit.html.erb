@@ -1,49 +1,38 @@
-<h1>Update Your Information</h1>
-<div>
-  <% if @user.errors.any? %>
-    <ul class="submit-errors">
-      <% @user.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+    <h1>Update Your Information</h1>
+      <%= form_for @user, url: users_path do |f| %>
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <p>To update your information, you must enter your password</p>
+        <div class="form-group">
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, class: "form-control" %>
+        </div>
+        <hr>
+        <p>Fill out the fields below only if you want to change your password.</p>
+        <hr>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update Profile" %>
+        </div>
       <% end %>
-    </ul>
-    <% end %>
-</div>
-
-
-<div>
-  <%= form_for @user, url: users_path do |f| %>
-    <div>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-    </div>
-    <div>
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </div>
-    <div>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-    </div>
-    <p>To update your information, you must enter your password</p>
-    <div>
-      <%= f.label :current_password %>
-      <%= f.password_field :current_password %>
-    </div>
-    <hr>
-    <p>Fill out the fields below only if you want to change your password.</p>
-    <hr>
-    <div>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-    <div>
-      <%= f.submit "Update Profile" %>
-    </div>
-  <% end %>
+  </div>
 </div>

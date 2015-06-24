@@ -292,7 +292,7 @@ height: 100%;
 	border: 1px solid #ddd;
 	border-radius: 4px;
 	background-color: #fdfdfd;
-	color: #00abeb;;
+	color: #00abeb;
 	text-align: center;
 	line-height: 36px;
 	font-size: 18px;
@@ -307,4 +307,36 @@ height: 100%;
 	line-height: 36px;
 	font-size: 18px;
 	color: #fff;
+}
+
+.border a {
+	border: 1px solid #ddd;
+	display: block;
+	border-radius: 4px;
+	background-color: #fdfdfd;
+	text-align: center;
+	margin: 10px 0;
+	font-size: 18px;
+}
+.border a:hover {
+	border: 1px solid #ddd;
+	display: block;
+	border-radius: 4px;
+	background-color: #FFB600;
+	text-align: center;
+	margin: 10px 0;
+	color: #fff;
+	font-size: 18px;
+}
+
+// .border .category-language {
+// 	font-size: 18px;
+// 	color: #00abeb;
+// 	padding-bottom: 0;
+// }
+
+.border .snip-number {
+	font-size: 12px;
+	color: #000;
+	padding-bottom: 5px;
 }
