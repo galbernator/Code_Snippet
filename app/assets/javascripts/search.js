@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 var $window = $(window),
       $stickyEl = $('#search'),
       elTop = $stickyEl.offset().top;
@@ -5,3 +7,4 @@ var $window = $(window),
   $window.scroll(function() {
        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
    });
+});

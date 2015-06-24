@@ -1,17 +1,44 @@
 // Place all the styles related to the votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.active-up-button {
-  font-size: 20px;
-  color: #0f0;
+button.btn-sm {
+  margin: 0 3px;
 }
 
-.inactive-button {
-  font-size: 20px;
-  color: #999;
+.positive {
+  color: #006400;
+  vertical-align: bottom;
 }
 
-.active-down-button {
-  font-size: 20px;
+.negative {
   color: #f00;
+  vertical-align: bottom;
+}
+
+.neutral {
+  vertical-align: bottom;
+}
+
+#results {
+  padding-top: 4px;
+  text-align: right;
+}
+
+#results span {
+  font-size: 1.2em;
+}
+
+#vote-buttons {
+  padding-bottom: 5px;
+}
+
+#category {
+  margin-top: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+button.btn-sm {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }

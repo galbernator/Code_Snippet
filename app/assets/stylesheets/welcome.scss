@@ -17,6 +17,10 @@ html, body {
 	height: 85px; /* .push must be the same height as .footer */
 }
 
+#search {
+	z-index: 100;
+}
+
 #search.sticky {
    position: fixed;
    top: 0;
@@ -27,9 +31,9 @@ html, body {
 }
 
 #divider-top {
-  margin: 10px auto 5px auto;
-  border-top: 2px solid #FFB600;
-  width: 94%;
+  margin: 0px auto;
+  border-bottom: 2px solid #FFB600;
+	width: 100%;
 }
 
 
@@ -158,6 +162,7 @@ a:hover {
   border-radius: 5px;
   align: left;
 	padding-left: 10px;
+	background-color: #fff;
 }
 
 #search-button {
@@ -171,6 +176,7 @@ a:hover {
   margin-top: 10px;
   min-width: 85px;
   align: right;
+	color: #333;
 }
 
 .wide {

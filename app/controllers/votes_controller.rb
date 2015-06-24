@@ -9,7 +9,6 @@ class VotesController < ApplicationController
     else
       redirect_to snippet
     end
-
   end
 
   def update

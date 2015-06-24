@@ -18,13 +18,11 @@ class WelcomeController < ApplicationController
                q, q, q, true, current_user.id).
                order("length(snippets.title)")
       else
-        @snippets = Snippet.joins(:category).
-          where("snippets.is_private = ? AND
-                (snippets.title ILIKE ? OR
+        @snippets = Snippet.joins(:category).where(is_private: false).
+          where("snippets.title ILIKE ? OR
                  snippets.block ILIKE ? OR
-                 categories.title ILIKE ?)",
-                 false, q, q, q).order
-                 ("length(snippets.title)")
+                 categories.title ILIKE ?",
+                 q, q, q).order("length(snippets.title)")
       end
 
   end

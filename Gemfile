@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "bootstrap-sass"
 
+gem 'friendly_id', '~> 5.1.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
