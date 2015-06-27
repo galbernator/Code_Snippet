@@ -21,25 +21,16 @@
         <span id="category"><%= @snippet.category.title %></span>
       </div>
       <div class="col-xs-5" id="vote-buttons">
-        <% if @vote.nil? %>
-          <%= link_to "<button class='btn btn-default btn-sm'>Helpful</button>".html_safe, snippet_votes_path(@snippet, {vote: {is_up: true}}), method: :post %>
-          <%= link_to "<button class='btn btn-default btn-sm'>Unhelpful</button>".html_safe, snippet_votes_path(@snippet, {vote: {is_up: false}}), method: :post %>
-        <% elsif @vote.is_up? %>
-          <%= link_to "<button class='btn btn-default btn-sm btn-success'>Helpful</button>".html_safe, snippet_vote_path(@snippet, @vote), method: :delete %>
-          <%= link_to "<button class='btn btn-default btn-sm'>Unhelpful</button>".html_safe, snippet_vote_path(@snippet, @vote, {vote: {is_up: false}}), method: :patch %>
-        <% else %>
-          <%= link_to "<button class='btn btn-default btn-sm'>Helpful</button>".html_safe, snippet_vote_path(@snippet, @vote, {vote:{is_up: true}}), method: :patch %>
-          <%= link_to "<button class='btn btn-default btn-sm btn-danger'>Unhelpful</button>".html_safe, snippet_vote_path(@snippet, @vote), method: :delete %>
-        <% end %>
+        <%= render 'votes/vote' %>
       </div>
       <div class="col-xs-4" id="results">
         <span>Current Voting: </span>
         <% if @snippet.vote_result < 0 %>
-          <span class="negative"><%= @snippet.vote_result %></span>
+          <span id="vote_count" class="negative"><%= @snippet.vote_result %></span>
         <% elsif @snippet.vote_result > 0 %>
-          <span class="positive"><%= @snippet.vote_result %></span>
+          <span id="vote_count" class="positive"><%= @snippet.vote_result %></span>
         <% else %>
-          <span class="neutral"><%= @snippet.vote_result %></span>
+          <span id="vote_count" class="neutral"><%= @snippet.vote_result %></span>
         <% end %>
       </div>
     </div>

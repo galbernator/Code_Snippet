@@ -1,0 +1,12 @@
+<div id="vote">
+  <% if @vote.nil? %>
+    <%= link_to "<button class='btn btn-default btn-sm'>Helpful</button>".html_safe, snippet_votes_path(@snippet, {vote: {is_up: true}}), method: :post, remote: true %>
+    <%= link_to "<button class='btn btn-default btn-sm'>Unhelpful</button>".html_safe, snippet_votes_path(@snippet, {vote: {is_up: false}}), method: :post, remote: true %>
+  <% elsif @vote.is_up? %>
+    <%= link_to "<button class='btn btn-default btn-sm btn-success'>Helpful</button>".html_safe, snippet_vote_path(@snippet, @vote), method: :delete, remote: true %>
+    <%= link_to "<button class='btn btn-default btn-sm'>Unhelpful</button>".html_safe, snippet_vote_path(@snippet, @vote, {vote: {is_up: false}}), method: :patch, remote: true %>
+  <% else %>
+    <%= link_to "<button class='btn btn-default btn-sm'>Helpful</button>".html_safe, snippet_vote_path(@snippet, @vote, {vote:{is_up: true}}), method: :patch, remote: true %>
+    <%= link_to "<button class='btn btn-default btn-sm btn-danger'>Unhelpful</button>".html_safe, snippet_vote_path(@snippet, @vote), method: :delete, remote: true %>
+  <% end %>
+</div>
