@@ -1,5 +1,14 @@
 class SessionsController < ApplicationController
 
+  def index
+    list = Category.all.pluck(:id)
+    @array_of_ids = []
+    list.each { |id| @array_of_ids << id }
+    category_snippet_count = Hash.new(0)
+    # @array_of_ids.each { |id| category_snippet_count[id] = Snippet.find(category_id: id).length }
+    # @categories = count.sort_by{|k, v| v}.reverse!
+  end
+
   def new
     @user = User.new
   end

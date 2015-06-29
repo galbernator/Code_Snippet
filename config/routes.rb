@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch :update, on: :collection
   end
 
-  resources :sessions, only: [:new, :create, :show] do
+  resources :sessions, only: [:index, :new, :create, :show] do
     delete :destroy, on: :collection
   end
 

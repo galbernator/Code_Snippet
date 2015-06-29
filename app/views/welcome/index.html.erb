@@ -23,9 +23,9 @@
       <h1 class="center-text welcome">Welcome&nbsp;to CodeSnippet</h1>
   </div>
 </div>
-<div class="row">
+<div class="row" data-appear-top-offset="-100" data-animated="fadeInUp">
   <div class="col-xs-12 col-sm-4 col-md-4 topper">
-      <%= image_tag "time.png", class: "center-block top-and-bottom" %>
+      <%= image_tag "time.png", class: "center-block top-and-bottom", id: "time" %>
       <h3 class="center-text">SAVE TIME</h3>
       <p class="blurb center-block">
         Not only do we offer a vast database of code snippets but you can save
@@ -33,7 +33,7 @@
       </p>
   </div>
   <div class="col-xs-12 col-sm-4 col-md-4 topper">
-      <%= image_tag "cut.png", class: "center-block top-and-bottom" %>
+      <%= image_tag "cut.png", class: "center-block top-and-bottom", id: "cut" %>
       <h3 class="center-text">CUT AND PASTE</h3>
       <p class="blurb center-block">
         Our upcoming web browser extension will allow for even quicker code
@@ -41,7 +41,7 @@
       </p>
   </div>
   <div class="col-xs-12 col-sm-4 col-md-4 topper">
-      <%= image_tag "brackets.png", class: "center-block top-and-bottom" %>
+      <%= image_tag "brackets.png", class: "center-block top-and-bottom", id: "brackets" %>
       <h3 class="center-text">ACCESSABLE CODE</h3>
       <p class="blurb center-block">
         The right code is good but knowing how and why it
@@ -55,14 +55,14 @@
   </div>
 </div>
 <div class="row dark">
-  <% @categories.each do |category| %>
-    <% number = Snippet.where("category_id = #{category.id}").length %>
+  <% @top_11.each do |language_title, count| %>
+  <% category_id = Category.where(title: language_title).pluck(:id) %>
   <div class="col-xs-6 col-sm-4 col-md-3">
     <table class="wide">
       <tr>
         <td class="language-cell">
-          <%= link_to category.title.upcase, category_path(category), :class => "language" %><br>
-          <span class="snippet-count"><%= number > 1 || number == 0 ? "#{number} Snippets" : "#{number} Snippet" %></span>
+          <%= link_to language_title.upcase, category_path(category_id), :class => "language" %><br>
+          <span class="snippet-count"><%= count > 1 || count == 0 ? "#{count} Snippets" : "#{count} Snippet" %></span>
         </td>
       </tr>
     </table>
