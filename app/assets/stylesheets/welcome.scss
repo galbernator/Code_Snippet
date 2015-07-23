@@ -5,10 +5,20 @@
 	margin: 0;
 }
 html, body {
-	height: 100%;
+  width: 100% !important;
+  overflow-x: hidden !important;
 }
+
+.container {
+     padding-right: 0;
+     padding-left: 0;
+     margin-right: auto;
+     margin-left: auto;
+}
+
 .wrapper {
 	min-height: 100%;
+	width: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
 	height: 100%;
 	margin: 0 auto -85px; /* the bottom margin is the negative value of the footer's height */
@@ -38,7 +48,8 @@ html, body {
 
 
 .code-background {
-  background-image: image-url("codescreen.jpg");
+  // background-image: image-url("codescreen.jpg");
+	background: url(asset_path('codescreen.jpg')) no-repeat center center fixed;
   background-size: cover;
 }
 
