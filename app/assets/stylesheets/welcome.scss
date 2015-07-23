@@ -185,7 +185,7 @@ a:hover {
   background-color: #fff;
   width: 20%;
   margin-top: 10px;
-  min-width: 85px;
+  min-width: 65px;
   align: right;
 	color: #333;
 }
@@ -202,15 +202,29 @@ a:hover {
   text-align: center;
 }
 
-.language {
+.language-lg {
   font-size: 28px;
   color: #fff;
   font-weight: bold;
   text-decoration: none;
 }
 
-.language:hover {
+.language-lg:hover {
   font-size: 28px;
+  color: #ccc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.language-sm {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.language-sm:hover {
+  font-size: 22px;
   color: #ccc;
   font-weight: bold;
   text-decoration: none;
