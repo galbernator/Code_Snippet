@@ -49,7 +49,7 @@ html, body {
 
 .code-background {
   // background-image: image-url("codescreen.jpg");
-	background: url(asset_path('codescreen.jpg')) no-repeat center center fixed;
+	background: url(asset_path('codescreen.jpg')) no-repeat;
   background-size: cover;
 }
 
