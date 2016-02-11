@@ -15,10 +15,14 @@ class Snippet < ActiveRecord::Base
   end
 
   def vote_result
-      count = 0
-      votes.each {|v| v.is_up? ? count += 1 : count -= 1}
-      count
-    end
+    count = 0
+    votes.each {|v| v.is_up? ? count += 1 : count -= 1}
+    count
+  end
+
+  def author(current_user)
+    user == current_user
+  end
 
   private
 

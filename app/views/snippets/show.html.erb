@@ -39,7 +39,7 @@
 <div class="row">
   <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
     <pre class="code">
-      <%= @snippet.block %>
+      <%= simple_format @snippet.block %>
     </pre>
   </div>
 </div>
@@ -51,3 +51,10 @@
     </p>
   </div>
 </div>
+<% if @snippet.author(current_user) %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+      <%= link_to 'Edit Snippet', edit_snippet_path(@snippet), class: 'btn btn-primary form-control' %>
+    </div>
+  </div>
+<% end %>
