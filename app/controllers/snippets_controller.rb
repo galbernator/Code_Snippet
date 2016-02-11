@@ -9,11 +9,9 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    snippet_params = params.require(:snippet).permit(:title, :block, :category_id, :description, :is_private)
     @snippet = Snippet.new(snippet_params)
-    if current_user
-      @snippet.user_id = current_user.id
-    end
+    @snippet.block = params[:snippet][:block].gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s")
+    @snippet.user_id = current_user.id if current_user
     if @snippet.save
       redirect_to snippet_path(@snippet)
     else
@@ -32,8 +30,8 @@ class SnippetsController < ApplicationController
 
   def update
     @snippet = Snippet.find params[:id]
-    snippet_params = params.require(:snippet).permit(:title, :block, :category_id, :description, :is_private)
-    if @snippet.update(snippet_params)
+    updated_params = snippet_params.merge({block: params[:snippet][:block].gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s")})
+    if @snippet.update(updated_params)
       redirect_to snippet_path(@snippet)
     else
       render :edit
@@ -42,5 +40,11 @@ class SnippetsController < ApplicationController
 
   def destroy
     @snippet = Snippet.find params[:id]
+  end
+
+  private
+
+  def snippet_params
+    params.require(:snippet).permit(:title, :category_id, :description, :is_private)
   end
 end
