@@ -27,7 +27,6 @@
     <div class="form-group">
       <%= f.label :category %>
       <%= f.collection_select :category_ids, Category.order("title"), :id, :title, {prompt: "Select categories"}, {multiple: true, class: "chosen-select form-control"} %>
-      <span class="help-block">Choose the most relevent category first.</span></span>
     </div>
     <% if current_user %>
     <div class="form-group">
