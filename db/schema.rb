@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623215645) do
+ActiveRecord::Schema.define(version: 20160212061326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,18 +22,26 @@ ActiveRecord::Schema.define(version: 20150623215645) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "snippet_categories", force: :cascade do |t|
+    t.integer  "snippet_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "snippet_categories", ["category_id"], name: "index_snippet_categories_on_category_id", using: :btree
+  add_index "snippet_categories", ["snippet_id"], name: "index_snippet_categories_on_snippet_id", using: :btree
+
   create_table "snippets", force: :cascade do |t|
     t.string   "title"
     t.text     "block"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "category_id"
     t.integer  "user_id"
     t.boolean  "is_private"
     t.text     "description"
   end
 
-  add_index "snippets", ["category_id"], name: "index_snippets_on_category_id", using: :btree
   add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -58,7 +66,8 @@ ActiveRecord::Schema.define(version: 20150623215645) do
   add_index "votes", ["snippet_id"], name: "index_votes_on_snippet_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
-  add_foreign_key "snippets", "categories"
+  add_foreign_key "snippet_categories", "categories"
+  add_foreign_key "snippet_categories", "snippets"
   add_foreign_key "snippets", "users"
   add_foreign_key "votes", "snippets"
   add_foreign_key "votes", "users"

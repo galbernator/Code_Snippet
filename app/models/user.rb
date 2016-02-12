@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :votes, dependent: :destroy
   has_many :voted_snippets, through: :votes, source: :snippet
+  has_many :snippets
 
   validates :first_name, presence: true
   validates :last_name, presence: true

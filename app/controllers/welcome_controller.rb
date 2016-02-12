@@ -1,20 +1,13 @@
 class WelcomeController < ApplicationController
 
   def index
-    list = Category.all.pluck(:id)
-    array_of_ids = []
-    hash_of_language_and_count = Hash.new
-    list.each { |id| array_of_ids << id }
-    array_of_ids.each do |category_id|
-      language_title = (Category.find category_id).title
-      count = Snippet.where(category_id: category_id).length
-      hash_of_language_and_count[language_title] = count
+    language_and_count_hash = {}
+    Category.all.each do |category|
+      language_title = category.title
+      count = category.snippets.count
+      language_and_count_hash[language_title] = count
     end
-    hash_of_language_and_count = hash_of_language_and_count.sort_by{|k, v| v}.reverse!
-    @top_11 = []
-    for i in 0...11
-      @top_11 << hash_of_language_and_count[i]
-    end
+    @top_11 = language_and_count_hash.sort_by{ |language, count| count }.reverse.first(11)
   end
 
   def search

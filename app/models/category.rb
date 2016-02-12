@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
-  has_many :snippets, dependent: :nullify
+  has_many :snippet_categories, dependent: :destroy
+  has_many :snippets, through: :snippet_categories
+
 
   validates :title, uniqueness: true
 end

@@ -9,8 +9,7 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    @snippet = Snippet.new(snippet_params)
-    @snippet.block = params[:snippet][:block].gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s")
+    @snippet = Snippet.new(updated_params)
     @snippet.user_id = current_user.id if current_user
     if @snippet.save
       redirect_to snippet_path(@snippet)
@@ -30,7 +29,6 @@ class SnippetsController < ApplicationController
 
   def update
     @snippet = Snippet.find params[:id]
-    updated_params = snippet_params.merge({block: params[:snippet][:block].gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s")})
     if @snippet.update(updated_params)
       redirect_to snippet_path(@snippet)
     else
@@ -46,7 +44,11 @@ class SnippetsController < ApplicationController
 
   private
 
+  def updated_params
+    snippet_params.merge({block: params[:snippet][:block].gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s")})
+  end
+
   def snippet_params
-    params.require(:snippet).permit(:title, :category_id, :description, :is_private)
+    params.require(:snippet).permit(:title, {category_ids: []}, :description, :is_private, :block)
   end
 end

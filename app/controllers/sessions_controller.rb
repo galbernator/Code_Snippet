@@ -24,13 +24,8 @@ class SessionsController < ApplicationController
   end
 
   def show
-    all_snippets = Snippet.where("user_id = #{current_user.id}").order("title")
-    all_categories = []
-    all_snippets.each do |snippet|
-      all_categories << snippet.category.title
-    end
-    @unique_categories = all_categories.uniq
-    @snippets = Snippet.where("user_id = ?", "#{current_user.id}").order("created_at DESC")
+    @snippets = current_user.snippets
+    @categories = @snippets.map { |snippet| snippet.categories }.flatten.uniq
   end
 
   def destroy
