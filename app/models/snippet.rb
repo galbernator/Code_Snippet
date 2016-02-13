@@ -13,6 +13,9 @@ class Snippet < ActiveRecord::Base
   after_initialize :set_defaults
 
   scope :created_by, lambda { |user| where(user_id: user) }
+  scope :not_private, -> { where(is_private: false) }
+  scope :search_for, lambda { |query| where("snippets.title ILIKE ? OR snippets.block ILIKE ? OR snippets.description ILIKE ?", query, query, query).uniq }
+
 
   def vote_for(user)
     votes.find_by_user_id(user)
