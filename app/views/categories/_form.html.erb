@@ -1,0 +1,23 @@
+<div>
+  <% if @category.errors.any? %>
+    <ul class="submit-errors">
+      <% @category.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+</div>
+
+<div>
+  <%= form_for @category do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save", class: "form-control account-button" %>
+    </div>
+  <% end %>
+</div>

@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :update, :destroy]
   end
 
-  resources :categories, only: [:show]
-
   post "/search" => "welcome#search", as: :all_search
 
   post "/categories/:id/search" => "categories#search", as: :category_search
@@ -28,6 +26,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:index, :new, :create, :show] do
     delete :destroy, on: :collection
   end
+
+  resources :categories
 
 
 
