@@ -55,31 +55,31 @@
   </div>
 </div>
 <div class="row dark">
-  <% @top_11.each do |language_title, count| %>
-  <% category_id = Category.where(title: language_title).pluck(:id) %>
-  <div class="col-xs-6 col-sm-4 col-md-3">
-    <table class="wide">
-      <tr>
-        <td class="language-cell hidden-sm hidden-md hidden-lg">
-          <%= link_to language_title.upcase, category_path(category_id), :class => "language-sm" %><br>
-          <span class="snippet-count"><%= count > 1 || count == 0 ? "#{count} Snippets" : "#{count} Snippet" %></span>
-        </td>
-        <td class="language-cell hidden-xs">
-          <%= link_to language_title.upcase, category_path(category_id), :class => "language-lg" %><br>
-          <span class="snippet-count"><%= count > 1 || count == 0 ? "#{count} Snippets" : "#{count} Snippet" %></span>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <% @top_11.each do |language| %>
+    <% count = language.snippets.count %>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+      <table class="wide">
+        <tr>
+          <td class="language-cell hidden-sm hidden-md hidden-lg">
+            <%= link_to language.title.upcase, category_path(language), :class => "language-sm" %><br>
+            <span class="snippet-count"><%= count > 1 || count == 0 ? "#{count} Snippets" : "#{count} Snippet" %></span>
+          </td>
+          <td class="language-cell hidden-xs">
+            <%= link_to language.title.upcase, category_path(language), :class => "language-lg" %><br>
+            <span class="snippet-count"><%= count > 1 || count == 0 ? "#{count} Snippets" : "#{count} Snippet" %></span>
+          </td>
+        </tr>
+      </table>
+    </div>
   <% end %>
   <div class="col-xs-6 col-sm-4 col-md-3">
     <table class="wide">
       <tr>
         <td class="language-cell hidden-sm hidden-md hidden-lg">
-          <a href="#"class="language-sm">SEE MORE...</a>
+          <a href="/categories"class="language-sm">SEE MORE...</a>
         </td>
         <td class="language-cell hidden-xs">
-          <a href="#"class="language-lg">SEE MORE...</a>
+          <a href="/categories"class="language-lg">SEE MORE...</a>
         </td>
       </tr>
     </table>
