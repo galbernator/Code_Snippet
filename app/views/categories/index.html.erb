@@ -3,11 +3,11 @@
     <h1 class="text-center">Categories</h1>
     <div class="row">
       <% @categories.each do |category| %>
-        <div class="col-md-4">
-          <% if category %>
+        <% if category %>
+          <div class="col-xs-6 col-sm-4 col-md-3 search-results">
             <span class="center-block"><%= link_to category.title, category_path(category) %></span>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
+    @categories = Category.all.sort_by{ |category| category.title.downcase }
   end
 
   def new

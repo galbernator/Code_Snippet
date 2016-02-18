@@ -10,7 +10,7 @@
   <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
     <div class="row">
   <h1 class="center-text top-and-bottom">Search Results</h1>
-  <% if @snippets.length != 0  %>
+  <% if @snippets.present?  %>
     <% @snippets.each do |snippet| %>
       <div class="col-xs-6 col-sm-4 col-md-3 search-results">
           <%= link_to snippet.title, snippet_path(snippet) %>
