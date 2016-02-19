@@ -1,6 +1,10 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authorize_admin
 
+  def index
+    @categories = Category.all.sort_by{ |c| c.title.downcase}
+  end
+
   def new
     @category = Category.new
   end
