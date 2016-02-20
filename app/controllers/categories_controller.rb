@@ -4,34 +4,8 @@ class CategoriesController < ApplicationController
     @categories = Category.all.sort_by{ |category| category.title.downcase }
   end
 
-  def new
-    @category = Category.new
-  end
-
-  def create
-    @category = Category.new(category_params)
-    if @category.save
-      categories_path @categroy
-    else
-      render :new
-    end
-  end
-
   def show
       @category = Category.find params[:id]
-      @snippets = @category.snippets
-  end
-
-  def edit
-    @category = Category.find params[:id]
-  end
-
-  def update
-    @category = Category.find params[:id]
-  end
-
-  def destroy
-    @category = Category.find params[:id]
   end
 
   def search

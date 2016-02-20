@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
+  namespace :admin do
+    resources :categories, only: [:index, :new, :create, :edit, :destroy]
+  end
+
   resources :snippets do
     resources :votes, only: [:create, :update, :destroy]
   end
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
 
 
 

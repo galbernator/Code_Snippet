@@ -6,10 +6,20 @@
     <% end %>
   </div>
 </div>
+<div class="row">
+  <h1 class="center-text"><%= @category.title %> Snippets</h1>
+  <% if @category.snippets.any? %>
+    <% @category.snippets.each do |snippet| %>
+      <div class="well">
+          <%= link_to snippet.title, snippet_path(snippet) %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="well">
+      <h2 class="center-text">These are not the snippets you are looking for.</h2>
+      <p class="center-text">Oh no, there currently aren't any <%= @category.title %> snippets. Why don't you kick it off by <%= link_to 'adding the first', new_snippet_path %>!</p>
+    </div>
+    <hr>
+  <% end %>
 
-<h1><%= @category.title %> Snippets</h1>
-
-<% @snippets.each do |snippet| %>
-  <%= link_to snippet.title, snippet_path(snippet) %>
-  <hr>
-<% end %>
+</div>
