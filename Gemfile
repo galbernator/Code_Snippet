@@ -48,10 +48,8 @@ group :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spring'
-
+  gem 'database_cleaner'
   gem 'awesome_print'
-
   gem 'hirb'
-
   gem 'interactive_editor'
 end
