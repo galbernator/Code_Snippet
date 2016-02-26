@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   namespace :admin do
-    resources :categories, only: [:index, :new, :create, :edit, :destroy]
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   resources :snippets do

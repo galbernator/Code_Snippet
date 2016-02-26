@@ -4,6 +4,7 @@ FactoryGirl.define do
     last_name 'Rickerson'
     email 'rick@rickerson.com'
     role nil
+    password 'Thing!'
   end
 
 end
