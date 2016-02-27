@@ -175,7 +175,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
         @category = FactoryGirl.create(:category, title: 'PHP')
       end
       it 'redirects to the root path' do
-        patch :update, id: @category.id, cateogry: { title: 'Ruby' }
+        patch :update, id: @category.id, category: { title: 'Ruby' }
         expect(response).to redirect_to root_path
       end
     end

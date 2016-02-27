@@ -11,12 +11,7 @@ class CategoriesController < ApplicationController
   def search
     @category = Category.find params[:id]
     @search = params[:search]
-    q = "%#{@search}%"
-    @snippets = Snippet.joins(:category).
-        where("(snippets.title ILIKE ? OR
-                snippets.block ILIKE ?) AND
-                categories.title = ?",
-             q, q, @category.title)
+    @snippets = Snippet.not_private.with_category(@category).search_for("%#{@search}%")
   end
 
   private
