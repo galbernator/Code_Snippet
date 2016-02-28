@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path, notice: "Please sign in" unless user_signed_in?
   end
 
-  def user_signed_in
+  def user_signed_in?
     current_user.present?
   end
 

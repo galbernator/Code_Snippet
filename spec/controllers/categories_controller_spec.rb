@@ -1,14 +1,13 @@
 require 'rails_helper'
-require 'factory_girl_rails'
 
 RSpec.describe CategoriesController, type: :controller do
   def login
-    user = FactoryGirl.create(:user, role: 'admin', password: 'Things!')
+    user = create(:user, role: 'admin', password: 'Things!')
     request.session[:user_id] = user.id
   end
 
   def create_category(options = nil)
-    @category = FactoryGirl.create(:category, options)
+    @category = create(:category, options)
   end
 
   describe 'GET #index' do
@@ -54,7 +53,7 @@ RSpec.describe CategoriesController, type: :controller do
     it 'returns results of search in an snippets instance variable' do
       category_1 = create_category({ title: 'PHP' })
       category_2 = create_category({ title: 'Ruby' })
-      snippet = FactoryGirl.create(:snippet, description: 'this has Ruby things')
+      snippet = create(:snippet, description: 'this has Ruby things')
       category_2.snippets << snippet
       post :search, id: category_2.id, search: 'ruby'
       expect(assigns(:snippets)).to eq([snippet])

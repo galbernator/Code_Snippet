@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:edit, :update]
 
   def new
     @user = User.new
