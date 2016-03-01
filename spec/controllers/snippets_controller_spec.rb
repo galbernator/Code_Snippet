@@ -10,7 +10,7 @@ RSpec.describe SnippetsController, type: :controller do
   end
 
   describe 'Snippet' do
-    it 'is a valid user' do
+    it 'is a valid snippet' do
       expect(build(:snippet)).to be_valid
     end
   end

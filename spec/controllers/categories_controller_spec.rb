@@ -11,7 +11,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'Category' do
-    it 'is a valid user' do
+    it 'is a valid category' do
       expect(build(:category)).to be_valid
     end
   end

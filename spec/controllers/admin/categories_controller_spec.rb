@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'factory_girl_rails'
 
 RSpec.describe Admin::CategoriesController, type: :controller do
   def login
@@ -12,7 +11,7 @@ RSpec.describe Admin::CategoriesController, type: :controller do
   end
 
   describe 'Category' do
-    it 'is a valid user' do
+    it 'is a valid category' do
       expect(build(:category)).to be_valid
     end
   end
