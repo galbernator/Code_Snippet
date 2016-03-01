@@ -9,8 +9,10 @@ class Snippet < ActiveRecord::Base
   has_many :categories, through: :snippet_categories
 
   validates :title, uniqueness: true
+  validates :block, presence: true
 
   after_initialize :set_defaults
+  before_save :format_block
 
   scope :created_by, lambda { |user| where(user_id: user) }
   scope :not_private, -> { where(is_private: false) }
@@ -36,6 +38,10 @@ class Snippet < ActiveRecord::Base
 
   def set_defaults
     self.is_private ||= false
+  end
+
+  def format_block
+    self.block = self.block.gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s") if self.block.present?
   end
 
 
