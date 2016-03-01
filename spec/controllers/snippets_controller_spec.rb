@@ -9,6 +9,12 @@ RSpec.describe SnippetsController, type: :controller do
     request.session[:user_id] = user.id
   end
 
+  describe 'Snippet' do
+    it 'is a valid user' do
+      expect(build(:snippet)).to be_valid
+    end
+  end
+
   describe 'GET #index' do
     it 'returns HTTP success' do
       get :index

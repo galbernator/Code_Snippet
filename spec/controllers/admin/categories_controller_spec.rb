@@ -11,6 +11,12 @@ RSpec.describe Admin::CategoriesController, type: :controller do
     @category = FactoryGirl.create(:category)
   end
 
+  describe 'Category' do
+    it 'is a valid user' do
+      expect(build(:category)).to be_valid
+    end
+  end
+
   describe "GET #index" do
     context 'when user is logged in and is admin' do
       before do

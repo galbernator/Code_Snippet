@@ -9,6 +9,12 @@ RSpec.describe UsersController, type: :controller do
     request.session[:user_id] = @user.id
   end
 
+  describe 'User' do
+    it 'is a valid user' do
+      expect(build(:user)).to be_valid
+    end
+  end
+
   describe 'GET #new' do
     it "returns http success" do
       get :new
