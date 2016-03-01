@@ -20,7 +20,7 @@
             <div class="row">
           <% if current_user %>
               <div class="col-xs-3 col-sm-offset-2 col-sm-4 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path, 'data-no-turbolink' => true %></div>
-              <div class="col-xs-3 col-sm-2 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user), 'data-no-turbolink' => true %></div>
+              <div class="col-xs-3 col-sm-2 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, user_path(current_user), 'data-no-turbolink' => true %></div>
               <div class="col-xs-3 col-sm-2 col-md-2 right dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name.upcase %> <span class="glyphicon glyphicon-user"></span></a>
                 <ul class="dropdown-menu">
@@ -58,7 +58,7 @@
           <div class="row">
             <% if session[:user_id] %>
               <div class="col-xs-3 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path, 'data-no-turbolink' => true %></div>
-              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, session_path(current_user), 'data-no-turbolink' => true %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, user_path(current_user), 'data-no-turbolink' => true %></div>
               <div class="col-xs-3 col-sm-3 col-md-2 right"><span class="glyphicon glyphicon-user footer-icon">&nbsp;</span><%= link_to current_user.first_name.upcase, edit_users_path, 'data-no-turbolink' => true  %></div>
               <div class="col-xs-3 col-sm-3 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete, 'data-no-turbolink' => true  %></div>
             <% else %>

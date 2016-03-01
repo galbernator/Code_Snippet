@@ -5,7 +5,8 @@ RSpec.describe UsersController, type: :controller do
   let(:user) { create(:user) }
 
   def login
-    request.session[:user_id] = user.id
+    @user = user
+    request.session[:user_id] = @user.id
   end
 
   describe 'GET #new' do
@@ -62,17 +63,46 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    context 'with user logged in' do
+      before { login }
+      it 'renders the show template' do
+        get :show, id: @user.id
+        expect(response).to render_template :show
+      end
+      it 'instantiates variable @snippets with users snippets' do
+        user_snippet = create(:snippet, user: @user)
+        snippet = create(:snippet, title: 'PHP')
+        get :show, id: @user.id
+        expect(assigns(:snippets)).to eq([user_snippet])
+      end
+      it 'instantiates variable @categories with users snippets' do
+        user_snippet = create(:snippet, user: @user)
+        category_1 = create(:category, title: 'Ruby')
+        category_2 = create(:category, title: 'Ruby on Rails')
+        user_snippet.categories << [category_1, category_2]
+        get :show, id: @user.id
+        expect(assigns(:categories)).to eq([category_1, category_2])
+      end
+    end
+
+    context 'with no user logged in' do
+      it 'redirect to the new session path' do
+        get :show, id: user.id
+        expect(response).to redirect_to new_session_path
+      end
+    end
+  end
+
   describe 'GET #edit' do
     context 'with user signed in' do
-      before do
-        login
-      end
+      before { login }
       def valid_request
-        get :edit, id: user.id
+        get :edit, id: @user.id
       end
       it 'instantiates @user with the requested user' do
         valid_request
-        expect(assigns(:user)).to eq(user)
+        expect(assigns(:user)).to eq(@user)
       end
       it 'renders the edit template' do
         valid_request
@@ -87,25 +117,23 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'PATCH #update' do
     context 'with user signed in' do
-      before do
-        login
-      end
+      before { login }
       context 'with valid params' do
         def valid_request
-          patch :update, id: user.id, user: { email: 'me@mail.com', current_password: 'abcdef123'}
+          patch :update, id: @user.id, user: { email: 'me@mail.com', current_password: 'abcdef123'}
         end
         it 'updates the existing record' do
           valid_request
-          expect(user.reload.email).to eq('me@mail.com')
+          expect(@user.reload.email).to eq('me@mail.com')
         end
       end
 
       context 'with invalid params' do
         def invalid_request
-          patch :update, id: user.id, user: { first_name: '', last_name: 'Smitherson' }
+          patch :update, id: @user.id, user: { first_name: '', last_name: 'Smitherson' }
         end
         it 'does not update the record' do
-          expect(user.reload.last_name).to_not eq('Smitherson')
+          expect(@user.reload.last_name).to_not eq('Smitherson')
         end
         it 'renders the exit template' do
           invalid_request
@@ -116,12 +144,7 @@ RSpec.describe UsersController, type: :controller do
 
     context 'with user not signed in' do
       it 'redirects to path' do
-        patch :update, id: user.id, user: {
-          first_name: 'Frank',
-          last_name: 'Frankerson',
-          email: 'frank@mail.com',
-          password: 'abcd1234'
-        }
+        patch :update, id: user.id, user: attributes_for(:user)
         expect(response).to redirect_to new_session_path
       end
     end
