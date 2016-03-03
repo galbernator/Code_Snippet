@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :snippet_category do
-    snippet    create(:snippet)
-    category   create(:category)
+    association :snippet, factory: :snippet
+    association :category, factory: :category
   end
 
 end

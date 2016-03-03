@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :vote do
-    user      create(:user)
-    snippet   create(:snippet)
+    association :user, factory: :user
+    association :snippet, factory: :snippet
+    is_up       true
   end
 
 end
