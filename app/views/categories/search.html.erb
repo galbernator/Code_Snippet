@@ -3,9 +3,23 @@
     <h1><%= @category.title %> Search results for "<%= @search %>"</h1>
   </div>
 </div>
-
-
-<% @snippets.each do |snippet| %>
-  <%= link_to snippet.title, snippet_path(snippet) %>
-  <hr>
-<% end %>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8">
+    <div class="row">
+      <% if @snippets.present?  %>
+        <% @snippets.each do |snippet| %>
+          <div class="col-xs-6 col-sm-4 col-md-3 search-results">
+              <%= link_to snippet.title, snippet_path(snippet) %>
+          </div>
+        <% end %>
+      </div>
+      <% else %>
+        <div class="col-xs-12">
+          <p class="center-text">
+            There were no snippets matching "<%= @search %>".
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

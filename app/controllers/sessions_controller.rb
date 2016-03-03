@@ -1,13 +1,5 @@
 class SessionsController < ApplicationController
-
-  def index
-    list = Category.all.pluck(:id)
-    @array_of_ids = []
-    list.each { |id| @array_of_ids << id }
-    category_snippet_count = Hash.new(0)
-    # @array_of_ids.each { |id| category_snippet_count[id] = Snippet.find(category_id: id).length }
-    # @categories = count.sort_by{|k, v| v}.reverse!
-  end
+  before_action :authorize, only: [:destroy]
 
   def new
     @user = User.new
@@ -21,11 +13,6 @@ class SessionsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @snippets = current_user.snippets
-    @categories = @snippets.map { |snippet| snippet.categories }.flatten.uniq
   end
 
   def destroy

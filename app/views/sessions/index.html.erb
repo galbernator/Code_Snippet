@@ -1,7 +1,0 @@
-<% @array_of_ids.each do |category_id| %>
-  <% name = (Category.find category_id).title %>
-  <% count = Snippet.where(category_id: category_id).length %>
-  <div>
-    <%= name %>, <%= count %>
-  </div>
-<% end %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   namespace :admin do
-    resources :categories, only: [:index, :new, :create, :edit, :destroy]
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   resources :snippets do
@@ -22,12 +22,12 @@ Rails.application.routes.draw do
 
   post "/categories/:id/search" => "categories#search", as: :category_search
 
-  resources :users, only: [:new, :create] do
+  resources :users, only: [:new, :create, :show] do
     get :edit, on: :collection
     patch :update, on: :collection
   end
 
-  resources :sessions, only: [:index, :new, :create, :show] do
+  resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
 

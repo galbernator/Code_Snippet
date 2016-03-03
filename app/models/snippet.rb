@@ -9,12 +9,15 @@ class Snippet < ActiveRecord::Base
   has_many :categories, through: :snippet_categories
 
   validates :title, uniqueness: true
+  validates :block, presence: true
 
   after_initialize :set_defaults
+  before_save :format_block
 
   scope :created_by, lambda { |user| where(user_id: user) }
   scope :not_private, -> { where(is_private: false) }
-  scope :search_for, lambda { |query| where("snippets.title ILIKE ? OR snippets.block ILIKE ? OR snippets.description ILIKE ?", query, query, query).uniq }
+  scope :search_for, lambda { |query| where('snippets.title ILIKE ? OR snippets.block ILIKE ? OR snippets.description ILIKE ?', query, query, query).uniq }
+  scope :with_category, lambda { |category| joins(:snippet_categories).where('snippet_categories.category_id = ?', category) }
 
 
   def vote_for(user)
@@ -35,6 +38,10 @@ class Snippet < ActiveRecord::Base
 
   def set_defaults
     self.is_private ||= false
+  end
+
+  def format_block
+    self.block = self.block.gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s") if self.block.present?
   end
 
 

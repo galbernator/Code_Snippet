@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -14,6 +15,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @snippets = current_user.snippets
+    @categories = @snippets.map { |snippet| snippet.categories }.flatten.uniq
   end
 
 
