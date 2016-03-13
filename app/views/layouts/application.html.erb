@@ -15,7 +15,16 @@
     <div class="wrapper">
       <div class="container-fluid">
         <div class="row nav">
-          <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to image_tag("logo.png", :id=> "logo"), root_path, 'data-no-turbolink' => true  %></div>
+          <div class="col-xs-1 col-sm-1 col-md-1">
+            <% unless current_user %>
+              <%= link_to image_tag("logo.png", id: "logo"), root_path, 'data-no-turbolink' => true  %>
+            <% else %>
+              <a href="#" id="add-note" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-edit notes"></span><span class="hide-link">Hide</span></a></a>
+              <div class="dropdown-menu note-dropdown">
+                <%= render 'welcome/form', note: Note.new %>
+              </div>
+            <% end %>
+          </div>
           <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
             <div class="row">
           <% if current_user %>

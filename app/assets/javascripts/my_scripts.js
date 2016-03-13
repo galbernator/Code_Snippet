@@ -19,6 +19,29 @@ $(document).ready(function() {
     }
   });
 
+  // Swap the note icon and hide button
+  $('#add-note').click(function(){
+    $('span.notes').toggle();
+    $('span.hide-link').toggle();
+  });
+
+
+  $(document).delegate('div.note-dropdown', 'click', function(e) {
+    e.stopPropagation();
+  });
+  // Keep note dropdown open
+  // $('.wrapper').on('click', '.note-dropdown', function(e){
+  //   console.log("Stuff");
+  //   e.stopPropagation();
+  // });
+
+  $('#clear-note-fields').click(function(e){
+    e.preventDefault();
+    $('#note_title').val('')
+    $('#note_body').val('')
+    $('#note_category_ids').val('').trigger('chosen:updated');
+  });
+
 
   var $window = $(window),
       $stickyEl = $('#search'),

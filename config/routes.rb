@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  resources :notes, only: [:index, :create]
+
 
 
 

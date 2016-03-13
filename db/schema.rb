@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218053600) do
+ActiveRecord::Schema.define(version: 20160313034541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,26 @@ ActiveRecord::Schema.define(version: 20160218053600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "note_categories", force: :cascade do |t|
+    t.integer  "note_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "note_categories", ["category_id"], name: "index_note_categories_on_category_id", using: :btree
+  add_index "note_categories", ["note_id"], name: "index_note_categories_on_note_id", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "snippet_categories", force: :cascade do |t|
     t.integer  "snippet_id"
@@ -67,6 +87,9 @@ ActiveRecord::Schema.define(version: 20160218053600) do
   add_index "votes", ["snippet_id"], name: "index_votes_on_snippet_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "note_categories", "categories"
+  add_foreign_key "note_categories", "notes"
+  add_foreign_key "notes", "users"
   add_foreign_key "snippet_categories", "categories"
   add_foreign_key "snippet_categories", "snippets"
   add_foreign_key "snippets", "users"

@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action: authorize
+  before_action :authorize
 
   def index
     @notes = current_user.notes
@@ -9,8 +9,10 @@ class NotesController < ApplicationController
     @note = current_user.notes.new(note_params)
     if @note.save
       respond_to do |format|
-        format.js
+        format.html
+        format.js { render }
       end
+    end
   end
 
   private

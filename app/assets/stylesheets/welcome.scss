@@ -429,3 +429,49 @@ height: 100%;
 				-o-animation-name: fadeInUp;
 						animation-name: fadeInUp;
 }
+
+.notes {
+	font-size: 30px;
+	color: #999;
+	margin: 8px 0;
+}
+
+.note-dropdown {
+	min-width: 400px;
+	border-radius: 3px;
+	margin:  5px 15px;
+	padding: 10px 25px;
+}
+
+#note-close {
+	font-size: 20px;
+	color: #999;
+	float: right;
+	margin-right: -15px;
+	cursor: pointer;
+}
+
+h3.note-title {
+	display: inline-block;
+	color: #999;
+	margin-top: 0;
+}
+
+.hide-link {
+	font-size: 20px;
+	line-height: 46px;
+	display: none;
+	padding: 10px 0;
+	text-decoration: none;
+}
+
+.note-success {
+	margin-top: 20px;
+	font-size: 60px;
+	color: #0f0;
+}
+
+.errors {
+	line-height: 40px;
+	color: #f00;
+}
