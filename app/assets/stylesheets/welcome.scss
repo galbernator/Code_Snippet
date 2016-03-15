@@ -20,7 +20,6 @@ html, body {
 	min-height: 100%;
 	width: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-	height: 100%;
 	margin: 0 auto -85px; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
@@ -46,7 +45,7 @@ html, body {
 
 #divider-top {
   margin: 0px auto;
-  border-bottom: 2px solid #FFB600;
+  border-bottom: 2px solid #ffb600;
 	width: 100%;
 }
 
@@ -432,15 +431,22 @@ height: 100%;
 
 .notes {
 	font-size: 30px;
-	color: #999;
+	color: #00abeb;
 	margin: 8px 0;
 }
 
 .note-dropdown {
+	position: absolute;;
+	top: 47px;
+	left: 5px;
+	background-color: #fff;
 	min-width: 400px;
-	border-radius: 3px;
+	border-radius: 6px;
 	margin:  5px 15px;
 	padding: 10px 25px;
+	z-index: 1000;
+	border: 1px solid #999;
+	display: none;
 }
 
 #note-close {
@@ -453,7 +459,7 @@ height: 100%;
 
 h3.note-title {
 	display: inline-block;
-	color: #999;
+	color: #aaa;
 	margin-top: 0;
 }
 

@@ -8,15 +8,12 @@
     $('span.hide-link').toggle();
     $('span.notes').toggle();
     <% @note = Note.new %>
-    $('div.dropdown-menu.note-dropdown').html("<%= j render 'welcome/form', note: @note %>");
-    $('div.dropdown-menu.note-dropdown').dropdown('toggle');
+    $('div.note-dropdown').html("<%= j render 'notes/form', note: @note %>");
+    $('div.note-dropdown').toggle();
     $(".chosen-select").chosen({
       no_results_text: "No matching manufacturers found",
       placeholder_text_multiple: "Categories...",
       width: "100%"
-    });
-    $('.note-dropdown').click(function(e){
-      e.stopPropagation();
     });
   }, 1200);
 
