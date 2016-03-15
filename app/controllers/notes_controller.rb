@@ -3,6 +3,7 @@ class NotesController < ApplicationController
 
   def index
     @notes = current_user.notes
+    @categories = @notes.map { |note| note.categories }.flatten.uniq
   end
 
   def create
