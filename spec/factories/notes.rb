@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :note do
-    title "MyString"
-body "MyText"
+    title "Remember this one thing"
+    body "Writing tests for everything is awesome!"
   end
-
 end

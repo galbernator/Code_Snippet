@@ -76,20 +76,6 @@ RSpec.describe UsersController, type: :controller do
         get :show, id: @user.id
         expect(response).to render_template :show
       end
-      it 'instantiates variable @snippets with users snippets' do
-        user_snippet = create(:snippet, user: @user)
-        snippet = create(:snippet, title: 'PHP')
-        get :show, id: @user.id
-        expect(assigns(:snippets)).to eq([user_snippet])
-      end
-      it 'instantiates variable @categories with users snippets' do
-        user_snippet = create(:snippet, user: @user)
-        category_1 = create(:category, title: 'Ruby')
-        category_2 = create(:category, title: 'Ruby on Rails')
-        user_snippet.categories << [category_1, category_2]
-        get :show, id: @user.id
-        expect(assigns(:categories)).to eq([category_1, category_2])
-      end
     end
 
     context 'with no user logged in' do
