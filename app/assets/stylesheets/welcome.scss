@@ -20,11 +20,13 @@ html, body {
 	min-height: 100%;
 	width: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
-	height: 100%;
-	margin: 0 auto -85px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
-	height: 85px; /* .push must be the same height as .footer */
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	height: 20px; /* .push must be the same height as .footer */
 }
 
 #search {
@@ -46,7 +48,7 @@ html, body {
 
 #divider-top {
   margin: 0px auto;
-  border-bottom: 2px solid #FFB600;
+  border-bottom: 2px solid #ffb600;
 	width: 100%;
 }
 
@@ -428,4 +430,57 @@ height: 100%;
 			-moz-animation-name: fadeInUp;
 				-o-animation-name: fadeInUp;
 						animation-name: fadeInUp;
+}
+
+.notes {
+	font-size: 30px;
+	color: #00abeb;
+	margin: 8px 0;
+}
+
+.note-dropdown {
+	position: absolute;;
+	top: 47px;
+	left: 5px;
+	background-color: #fff;
+	min-width: 400px;
+	border-radius: 6px;
+	margin:  5px 15px;
+	padding: 10px 25px;
+	z-index: 1000;
+	border: 1px solid #999;
+	display: none;
+}
+
+#note-close {
+	font-size: 20px;
+	color: #999;
+	float: right;
+	margin-right: -15px;
+	cursor: pointer;
+}
+
+h3.note-title {
+	display: inline-block;
+	color: #aaa;
+	margin-top: 0;
+}
+
+.hide-link {
+	font-size: 20px;
+	line-height: 46px;
+	display: none;
+	padding: 10px 0;
+	text-decoration: none;
+}
+
+.note-success {
+	margin-top: 20px;
+	font-size: 60px;
+	color: #0f0;
+}
+
+.errors {
+	line-height: 40px;
+	color: #f00;
 }

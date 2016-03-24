@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @snippets = current_user.snippets
-    @categories = @snippets.map { |snippet| snippet.categories }.flatten.uniq
+  
   end
 
 

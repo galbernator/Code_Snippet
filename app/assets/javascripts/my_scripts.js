@@ -19,6 +19,27 @@ $(document).ready(function() {
     }
   });
 
+  // Swap the note icon and hide button
+  $('#add-note').click(function(e){
+    e.preventDefault();
+    $('.note-dropdown').toggle();
+  });
+
+  $('#note-close').click(function(){
+    $('.note-dropdown').toggle();
+    $('#note_title').val('')
+    $('#note_body').val('')
+    $('#note_category_ids').val('').trigger('chosen:updated');
+  });
+
+
+  $('#clear-note-fields').click(function(e){
+    e.preventDefault();
+    $('#note_title').val('')
+    $('#note_body').val('')
+    $('#note_category_ids').val('').trigger('chosen:updated');
+  });
+
 
   var $window = $(window),
       $stickyEl = $('#search'),

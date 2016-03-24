@@ -4,3 +4,46 @@
 .button-space {
   margin-top: 15px;
 }
+
+.user-info {
+  margin: 35px 0;
+}
+
+.user-image {
+  margin: 15px auto;
+  max-height: 150px;
+}
+
+.user-data {
+  width: 66%;
+  min-width: 300px;
+  text-align: left;
+  border: 1px solid #999;
+  border-collapse: collapse;
+  margin: 15px auto;
+  td {
+    border: 1px solid #999;
+  }
+}
+
+.stat-display {
+  width: 80%;
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin: 15px auto;
+  .stat-title {
+    text-align: center;
+    background-color: #00abeb;
+    color: #fff;
+    padding: 10px 0;
+    h3 {
+      margin: 0;
+    }
+  }
+  .stat {
+    font-size: 45px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+  }
+}

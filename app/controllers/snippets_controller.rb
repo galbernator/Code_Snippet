@@ -3,6 +3,7 @@ class SnippetsController < ApplicationController
 
   def index
     @snippets = current_user ? Snippet.not_private + current_user.snippets : Snippet.not_private
+    @categories = @snippets.map { |snippet| snippet.categories }.flatten.uniq
   end
 
   def new
