@@ -15,23 +15,12 @@
     <div class="wrapper">
       <div class="container-fluid">
         <div class="row nav">
-          <div class="col-xs-1 col-sm-1 col-md-1">
-            <% unless current_user %>
-              <%= link_to image_tag("logo.png", id: "logo"), root_path, 'data-no-turbolink' => true  %>
-            <% else %>
-              <a href="#" id="add-note">
-                <span class="glyphicon glyphicon-edit notes"></span><span class="hide-link">Hide</span>
-              </a>
-              <div class="note-dropdown">
-                <%= render 'notes/form', note: Note.new %>
-              </div>
-            <% end %>
-          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1"><%= link_to image_tag("logo.png", :id=> "logo"), root_path, 'data-no-turbolink' => true  %></div>
           <div class="col-xs-11 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-9">
             <div class="row">
           <% if current_user %>
               <div class="col-xs-3 col-sm-offset-2 col-sm-4 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path, 'data-no-turbolink' => true %></div>
-              <div class="col-xs-3 col-sm-2 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, snippets_path, 'data-no-turbolink' => true %></div>
+              <div class="col-xs-3 col-sm-2 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, user_path(current_user), 'data-no-turbolink' => true %></div>
               <div class="col-xs-3 col-sm-2 col-md-2 right dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name.upcase %> <span class="glyphicon glyphicon-user"></span></a>
                 <ul class="dropdown-menu">
@@ -39,7 +28,7 @@
                   <% if current_user.admin? %>
                     <li><%= link_to 'Admin Area', admin_categories_path, 'data-no-turbolink' => true %></li>
                   <% end %>
-                  <li><%= link_to 'My Profile', user_path(current_user), 'data-no-turbolink' => true %></li>
+                  <li><%= link_to 'Edit Profile', edit_users_path, 'data-no-turbolink' => true %></li>
                 </ul>
               </div>
               <div class="col-xs-3 col-sm-2 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete, 'data-no-turbolink' => true  %></div>
@@ -62,8 +51,25 @@
       </div>
       <div class="container-fluid">
       <div class="row footer-color footer">
+        <div class="col-xs-2 col-sm-4 col-md-3">
+              <%= link_to image_tag("logo.png", :id=> "footer-logo"), root_path, 'data-no-turbolink' => true  %>
+        </div>
+        <div class="col-xs-10 col-sm-8 col-md-9">
+          <div class="row">
+            <% if session[:user_id] %>
+              <div class="col-xs-3 col-sm-3 right col-md-offset-4 col-md-2"><%= link_to "+&nbsp;SNIPPET".html_safe, new_snippet_path, 'data-no-turbolink' => true %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><%= link_to "MY&nbsp;SNIPS".html_safe, user_path(current_user), 'data-no-turbolink' => true %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right"><span class="glyphicon glyphicon-user footer-icon">&nbsp;</span><%= link_to current_user.first_name.upcase, edit_users_path, 'data-no-turbolink' => true  %></div>
+              <div class="col-xs-3 col-sm-3 col-md-2 right pad-right"><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete, 'data-no-turbolink' => true  %></div>
+            <% else %>
+                <div class="col-xs-3 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2 right col-lg-offset-4 col-lg-2"><%= link_to "SIGN&nbsp;IN".html_safe, new_session_path, 'data-no-turbolink' => true %></div>
+                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 right pad-right"><%= link_to "ADD&nbsp;SNIPPET&nbsp;".html_safe, new_snippet_path, 'data-no-turbolink' => true %></div>
+                <div class="col-xs-5 col-sm-3 col-md-3 col-lg-3 right"><%= link_to "NEW&nbsp;ACCOUNT".html_safe, new_user_path, 'data-no-turbolink' => true %></div>
+            <% end %>
+          </div>
+        </div>
         <div class="col-xs-12">
-          <p class="company">&copy;&nbsp;<%= Time.now.year %>&nbsp;CodeSnippt by&nbsp;Steve&nbsp;Galbraith</p>
+          <p class="company">&copy;&nbsp;2015&nbsp;CodeSnippt by&nbsp;Steve&nbsp;Galbraith</p>
         </div>
       </div>
     </div>
