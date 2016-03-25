@@ -13,7 +13,7 @@
     <div class="row">
     <h3 class="center-text top-and-bottom">Notes by Language</h3>
     <% @categories.each do |category| %>
-      <% number = category.notes.created_by(current_user).count %>
+      <% number = current_user.notes.count %>
       <% notes = number > 1 || number == 0 ? "(#{number} Notes)" : "(#{number} Note)" %>
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="border">
