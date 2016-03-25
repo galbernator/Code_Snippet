@@ -5,8 +5,6 @@
     '<div class="text-center"><span class="glyphicon glyphicon-ok-circle   note-success"></span></div><h3 class="text-center">Note added successfully!</h3>'
   );
   setTimeout(function(){
-    $('span.hide-link').toggle();
-    $('span.notes').toggle();
     <% @note = Note.new %>
     $('div.note-dropdown').html("<%= j render 'notes/form', note: @note %>");
     $('div.note-dropdown').toggle();

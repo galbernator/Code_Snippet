@@ -4,7 +4,7 @@ RSpec.describe Note, type: :model do
   describe 'validations' do
     def valid_attributes(new_attributes = {})
       {
-        title:       'Some valid title',
+        title:      'Some valid title',
         body:       'Some valid body',
       }.merge(new_attributes)
     end
