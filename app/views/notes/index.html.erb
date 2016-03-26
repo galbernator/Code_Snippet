@@ -30,7 +30,8 @@
     <h3 class="center-text top-and-bottom">Latest Notes</h3>
     <% @notes.each do |note| %>
     <div class="col-xs-6 list">
-      <p class="text-center"><%= link_to note.title, note_path(note) %> (<%= note.categories.first.title %>)</p>
+      <p class="text-center"><%= link_to note.title, note_path(note) %>
+        <%= note.categories.first.title if note.categories.first %></p>
     </div>
     <% end %>
     </div>
