@@ -41,7 +41,9 @@ class Snippet < ActiveRecord::Base
   end
 
   def format_block
-    self.block = self.block.gsub(/[\r\t]/, "\r" => "", "\t" => "\s\s") if self.block.present?
+    if self.block.present? && !self.block.start_with?("~~~\n") && !self.block.end_with?("\n~~~")
+      self.block = self.block.prepend("~~~\n").concat("\n~~~")
+    end
   end
 
 
