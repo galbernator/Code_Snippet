@@ -9,7 +9,6 @@
     </ul>
     <% end %>
 </div>
-
 <div>
   <%= form_for @snippet do |f| %>
     <div class="form-group">
@@ -24,6 +23,9 @@
       <%= f.label :description, "Description of Snippet: " %>
       <%= f.text_area :description, class: "form-control", rows: '4' %>
     </div>
+    <div class="markdown-help-container">
+      <span class="markdown-help-text">* You can use Markdown in your snippet and description fields. Learn how in the <a href="http://kramdown.gettalong.org/quickref.html", target="_blank">Reference Guide</a>.</span>
+    </div>
     <div class="form-group">
       <%= f.label :category %>
       <%= f.collection_select :category_ids, Category.order("title"), :id, :title, {prompt: "Select categories"}, {multiple: true, class: "chosen-select form-control"} %>
@@ -37,5 +39,6 @@
     <div class="form-group">
       <%= f.submit "Save", class: "form-control account-button" %>
     </div>
+    <div class="spacer"></div>
   <% end %>
 </div>

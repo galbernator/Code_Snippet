@@ -6,6 +6,11 @@
   <div class="form-group">
     <%= f.text_area :body, class: "form-control note-field", rows: '13', placeholder: 'What would you like to remember?' %>
   </div>
+  <% unless note.new_record? %>
+    <div class="markdown-help-container">
+      <span class="markdown-help-text">* You can use Markdown in your note body. Learn how in the <a href="http://kramdown.gettalong.org/quickref.html", target="_blank">Reference Guide</a>.</span>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.collection_select :category_ids, Category.order("title"), :id, :title, {}, {multiple: true, class: "note-field chosen-select form-control"} %>
   </div>
@@ -14,4 +19,7 @@
   <div class="form-group">
     <%= f.submit "Save", class: "note-field form-control account-button" %>
   </div>
+  <% unless note.new_record? %>
+    <div class="spacer"></div>
+  <% end %>
 <% end %>
