@@ -12,15 +12,18 @@
 }
 
 .markdown-help-container {
-  margin: 10px 0 20px 0;
+  margin: -15px 0 10px 0;
   .markdown-help-text {
-    font-size: 13px;
+    font-size: 12px;
     color: #555;
+    img {
+      margin: -2px 8px 0 4px;
+    }
     a {
       text-decoration: none;
-      color: #00abeb;
+      color: #777;
       &:hover {
-        color: #000;
+        color: #00abeb;
       }
     }
   }
