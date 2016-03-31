@@ -7,4 +7,12 @@ class Note < ActiveRecord::Base
 
   validates :title, :body, presence: true
 
+  before_save :prettify_code_block
+
+  private
+
+  def prettify_code_block
+    self.body = self.body.gsub(/```/, "~~~")
+  end
+
 end

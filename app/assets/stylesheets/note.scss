@@ -2,3 +2,29 @@
   color: #777;
   margin: 4px 0 10px 0;
 }
+
+.note-title {
+  margin: 30px 0;
+}
+
+.note-padding {
+  padding: 22px 0;
+}
+
+.markdown-help-container {
+  margin: -15px 0 10px 0;
+  .markdown-help-text {
+    font-size: 12px;
+    color: #555;
+    img {
+      margin: -2px 8px 0 4px;
+    }
+    a {
+      text-decoration: none;
+      color: #777;
+      &:hover {
+        color: #00abeb;
+      }
+    }
+  }
+}

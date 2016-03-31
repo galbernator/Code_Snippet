@@ -30,7 +30,7 @@
     <h3 class="center-text top-and-bottom">Latest Snippets</h3>
     <% @snippets.each do |snippet| %>
     <div class="col-xs-6 list">
-      <p class="text-center"><%= link_to snippet.title, snippet_path(snippet) %> (<%= snippet.categories.first.title %>)</p>
+      <p class="text-center"><%= link_to snippet.title, snippet_path(snippet) %> (<%= snippet.categories.first.present? ? snippet.categories.first.title : 'No Category' %>)</p>
     </div>
     <% end %>
     </div>
