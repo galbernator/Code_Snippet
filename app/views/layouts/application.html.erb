@@ -44,12 +44,13 @@
               <div class="col-xs-3 col-sm-2 col-md-2 right dropdown"><%= link_to "MY&nbsp;NOTES".html_safe, notes_path, 'data-no-turbolink' => true %>
               </div>
               <div class="col-xs-3 col-sm-2 col-md-2 right dropdown pad-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name.upcase %> <span class="glyphicon glyphicon-user"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name.upcase %>&nbsp;<span class="glyphicon glyphicon-user"></span></a>
                 <ul class="dropdown-menu">
                   <li></li>
                   <% if current_user.admin? %>
                     <li><%= link_to 'Admin Area', admin_categories_path, 'data-no-turbolink' => true %></li>
                   <% end %>
+                  <li><%= link_to 'Home', root_path, 'data-no-turbolink' => true %></li>
                   <li><%= link_to 'My Profile', user_path(current_user), 'data-no-turbolink' => true %></li>
                   <li><%= link_to "LOG&nbsp;OUT".html_safe, sessions_path, method: :delete, 'data-no-turbolink' => true  %></li>
                 </ul>
