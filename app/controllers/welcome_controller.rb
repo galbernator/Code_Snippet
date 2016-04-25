@@ -8,9 +8,9 @@ class WelcomeController < ApplicationController
     query = "%#{params[:search]}%"
     if current_user
       @snippets = ((Snippet.not_private.search_for(query)) + (current_user.snippets.search_for(query))).uniq
-      else
-        @snippets = Snippet.not_private.search_for(query)
-      end
+    else
+      @snippets = Snippet.not_private.search_for(query)
+    end
   end
 
 end
