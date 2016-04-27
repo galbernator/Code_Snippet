@@ -17,7 +17,7 @@ class VotesController < ApplicationController
 
   def update
     @snippet = Snippet.find params[:snippet_id]
-    @vote = current_user.votes.new(vote_params)
+    @vote = current_user.votes.find params[:id]
     respond_to do |format|
       if @vote.update(vote_params)
         format.html { redirect_to @snippet }
@@ -31,7 +31,7 @@ class VotesController < ApplicationController
 
   def destroy
     @snippet = Snippet.find params[:snippet_id]
-    @vote = current_user.votes.find params[:id] 
+    @vote = current_user.votes.find params[:id]
     @vote.destroy
     respond_to do |format|
       format.html { redirect_to @snippet }
