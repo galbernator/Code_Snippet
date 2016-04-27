@@ -3,7 +3,7 @@ $(document).ready(function() {
   // allow tab character when entering the code snippet block
   $('#code-block').keydown(function(e) {
     var key = e.which;
-    if (key == 9) {
+    if (key === 9) {
       e.preventDefault();
       var start = $(this).get(0).selectionStart;
       var end = $(this).get(0).selectionEnd;
