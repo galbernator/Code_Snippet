@@ -41,14 +41,14 @@ RSpec.describe Snippet, type: :model do
     end
 
     context 'format_block' do
-      it 'does not format the block on creation' do
-        snippet = Snippet.new(valid_attributes({ block: "def block\r\n\tdo something\r\nend" }))
-        expect(snippet.block).to eq("def block\r\n\tdo something\r\nend")
+      it 'does not format the block on building' do
+        snippet = Snippet.new(valid_attributes({ block: "def block\r\n\s\sdo something\r\nend" }))
+        expect(snippet.block).to eq("def block\r\n\s\sdo something\r\nend")
       end
       it 'formats the block before saving' do
-        snippet = Snippet.new(valid_attributes({ block: "def block\r\n\tdo something\r\nend" }))
+        snippet = Snippet.new(valid_attributes({ block: "def block\r\n\s\sdo something\r\nend" }))
         snippet.save
-        expect(snippet.block).to eq("def block\n\s\sdo something\nend")
+        expect(snippet.block).to eq("~~~\ndef block\r\n\s\sdo something\r\nend\n~~~")
       end
     end
   end
