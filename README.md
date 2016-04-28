@@ -1,6 +1,7 @@
 #CODE SNIPPET
 
 [![Code Climate](https://codeclimate.com/github/galbernator/Code_Snippet/badges/gpa.svg)](https://codeclimate.com/github/galbernator/Code_Snippet)
+[![Build Status](https://travis-ci.org/galbernator/Code_Snippet.svg?branch=master)](https://travis-ci.org/galbernator/Code_Snippet)
 [![Test Coverage](https://codeclimate.com/github/galbernator/Code_Snippet/badges/coverage.svg)](https://codeclimate.com/github/galbernator/Code_Snippet/coverage)
 
 A place to store your favorite code snippets, search for helpful snippets posted by the community, and store notes to help you revisit those "ah ha!" moments.
